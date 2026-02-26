@@ -3,11 +3,9 @@ name: Build Base Image
 on:
   # 手动触发
   workflow_dispatch:
-  # 当 Dockerfile.base 变更时自动触发
+  # 提交代码到 main 分支就触发
   push:
     branches: [main]
-    paths:
-      - "Dockerfile.base"
 
 env:
   REGISTRY: ghcr.io
