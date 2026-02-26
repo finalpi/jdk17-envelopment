@@ -1,0 +1,16 @@
+FROM eclipse-temurin:17-jdk-jammy
+
+RUN apt-get update && \
+    apt-get install -y ffmpeg locales tzdata && \
+    rm -rf /var/lib/apt/lists/* && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    localedef -c -f UTF-8 -i zh_CN zh_CN.UTF-8 && \
+    echo "LANG=zh_CN.UTF-8" >> /etc/environment && \
+    echo "LC_ALL=zh_CN.UTF-8" >> /etc/environment && \
+    echo "Asia/Shanghai" > /etc/timezone
+
+ENV LANG=zh_CN.UTF-8 \
+    LANGUAGE=zh_CN:zh \
+    LC_ALL=zh_CN.UTF-8 \
+    TZ=Asia/Shanghai \
+    JAVA_OPTS="-Xms512m -Xmx512m -XX:+UseZGC -XX:MaxMetaspaceSize=256m -XX:MetaspaceSize=128m"
