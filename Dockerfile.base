@@ -8,7 +8,8 @@ RUN apt-get update && \
     libatomic1 \
     libegl1 \
     libxtst6 \
-    libxcomposite1 && \
+    libxcomposite1 \
+    libxdamage1 && \
     rm -rf /var/lib/apt/lists/* && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     localedef -c -f UTF-8 -i zh_CN zh_CN.UTF-8 && \
